@@ -1,4 +1,4 @@
-﻿# Solution name
+﻿# Lustre client and server node VMs deployment
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https://raw.githubusercontent.com/azmigproject/azure-lustre-client-server/master/101-lustre-client-server-create/azuredeploy.json" target="_blank">
 <img src="http://azuredeploy.net/deploybutton.png"/>
@@ -8,55 +8,11 @@
 </a>
 
 
-This template deploys a **solution name**. The **solution name** is a **description**
+This template creates Lustre client and server node VMs and related infrastructure such as VNETs. Provided below are the relevant details of the deployment.
 
-`Tags: Tag1, Tag2, Tag3`
-
-## Solution overview and deployed resources
-
-This is an overview of the solution
-
-The following resources are deployed as part of the solution
-
-#### Resource provider 1
-
-Description Resource Provider 1
-
-+ **Resource type 1A**: Description Resource type 1A
-+ **Resource type 1B**: Description Resource type 1B
-+ **Resource type 1C**: Description Resource type 1C
-
-#### Resource provider 2
-
-Description Resource Provider 2
-
-+ **Resource type 2A**: Description Resource type 2A
-
-#### Resource provider 3
-
-Description Resource Provider 3
-
-+ **Resource type 3A**: Description Resource type 3A
-+ **Resource type 3B**: Description Resource type 3B
-
-## Prerequisites
-
-Decscription of the prerequistes for the deployment
-
-## Deployment steps
-
-You can click the "deploy to Azure" button at the beginning of this document.
-
-## Usage
-
-#### Connect
-
-How to connect to the solution
-
-#### Management
-
-How to manage the solution
-
-## Notes
-
-Solution notes
+* 3 or more Luster servers which consists of MGS (management server), MDS (metadata server) and 1 or more OSS (object storage server).
+* OSS Servers are added in an availability set for HA
+* It also creates a file system along with the Luster servers. 
+* Creates 2 or more Intel Lustre 2.7 client virtual machines using Azure gallery CentOS 6.6 or 7.0 image and mounts an existing Intel Lustre file-system
+* These Lustre client nodes are added in an availability set for HA
+* Public IP will be attached to the client0 node. That node can be accessed via SSH [dnsNamePrefix].[region].cloudapp.azure.com.
